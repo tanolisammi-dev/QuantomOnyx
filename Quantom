@@ -1,3 +1,7 @@
+-- Deobfuscated by ccjvwsod on Discord
+-- Detected obfuscation: Luraph v15
+-- Local names are inferred from use (the original names are not in the bytecode)
+
 local RunService = not game and game.GetService and game:GetService("RunService") or game.ClassName ~= "DataModel" or typeof and typeof(game.Players) ~= "Instance"
 
 if not RunService then
@@ -52,23 +56,23 @@ if not RunService then
 		return print("already running")
 	end
 	getgenv().QuantumOnyxActive = true
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+	local request_ = nil
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+	if syn and syn.request then
+		request_ = syn.request
+	elseif http_request then
+		request_ = http_request
 	elseif http and http.request then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		request_ = http.request
 	else
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		request_ = request or httprequest or request_
 	end
 
 	local function fn2(arg)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		if not request_ then
 			return nil
 		end
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		return request_(arg)
 	end
 
 	local tbl = {
@@ -94,7 +98,7 @@ if not RunService then
 		Cache = {},
 		Runtime = {},
 		Performance = {},
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		Webhook = {},
 	}
 
 	setmetatable(tbl2.Services, { __index = function(arg, arg2)
@@ -227,7 +231,7 @@ if not RunService then
 	end)
 
 	tbl2.Modules = { GuideModule = GuideModule, GetWaterHeight = GetWaterHeightAtLocation, DangerDistance = DangerDistance, Net3 = Net, ItemConfig = ItemConfig }
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+	local str = "https://api.quantumonyx.cc"
 	local str2 = "QnTmOnyX"
 
 	local function fn3(arg, arg2)
@@ -265,7 +269,7 @@ if not RunService then
 		return table.concat(tbl7)
 	end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+	local str3 = "https://raw.githubusercontent.com/flazhy/QuantumOnyx/main/"
 	local tbl6 = {}
 	local tbl7 = {}
 
@@ -279,10 +283,10 @@ if not RunService then
 		if arg then
 			for i = 1, n do
 				local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					local response = game:HttpGet(str3 .. arg)
 
 					if response and #response > 0 and not response:sub(1, 20):find("404") and not response:find("404: Not Found", 1, true) then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						local chunk = loadstring(response)
 						if chunk then
 							return chunk()
 						end
@@ -318,7 +322,7 @@ if not RunService then
 	local swordData = lua.SwordData
 
 	tbl6.FireInvoke = function(...)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		return commF:InvokeServer(select(2, ...))
 	end
 
 	tbl2.Cache = {
@@ -662,7 +666,7 @@ if not RunService then
 							end
 
 							local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+								return v4.__ServerBrowser:InvokeServer(i)
 							end)
 
 							if ok and type(result) == "table" then
@@ -676,7 +680,7 @@ if not RunService then
 
 										pcall(function()
 											if not tbl2.Scheduler._CancelHop then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+												v4.__ServerBrowser:InvokeServer("teleport", k)
 											end
 										end)
 									end
@@ -699,7 +703,7 @@ if not RunService then
 			end
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				v4.__ServerBrowser:InvokeServer("teleport", game.JobId)
 			end)
 		end,
 	}
@@ -866,7 +870,7 @@ if not RunService then
 					task.spawn(function()
 						pcall(function()
 							if not tbl2.Scheduler._CancelHop then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+								v4.__ServerBrowser:InvokeServer("teleport", v20)
 							end
 						end)
 					end)
@@ -1112,7 +1116,7 @@ if not RunService then
 			while true do
 				tbl8:topos(CFrame.new(11426, -2155, 9732))
 				task.wait(2)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net:WaitForChild("RF/SubmarineTransportation"):InvokeServer("InitiateTeleport", "Tiki Outpost")
 				task.wait(2)
 				if not (not fn12(v19).Name:find("Submerged") or not fn11()) then
 					continue
@@ -1745,7 +1749,7 @@ if not RunService then
 		end
 
 		local handlers = { ["Skull Guitar"] = function(arg, arg2)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			arg.RemoteEvent:FireServer("TAP", arg2)
 		end }
 
 		local function fn17()
@@ -1814,13 +1818,13 @@ if not RunService then
 
 			pcall(function()
 				local v21, v22 = fn10()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				validator2:FireServer(v21, v22)
 
 				if tool:FindFirstChild("RemoteEvent") and (str4 == "TAP" or tool.Name == "Skull Guitar") then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					tool.RemoteEvent:FireServer("TAP", v19)
 				elseif reShootGunEvent then
 					for i = 1, n2 do
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						reShootGunEvent:FireServer(v19, { v20 })
 					end
 				end
 			end)
@@ -1841,7 +1845,7 @@ if not RunService then
 					local primaryPart = child.PrimaryPart or child:FindFirstChild("HumanoidRootPart")
 
 					if primaryPart and (primaryPart.Position - position).Magnitude <= 60 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						arg2.LeftClickRemote:FireServer((primaryPart.Position - position).Unit, arg)
 					end
 				end
 			end
@@ -1851,7 +1855,7 @@ if not RunService then
 					local meshPart = child:FindFirstChildOfClass("MeshPart") or child.PrimaryPart
 
 					if meshPart and (meshPart.Position - position).Magnitude <= 70 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						arg2.LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true)
 					end
 				end
 			end
@@ -1890,12 +1894,12 @@ if not RunService then
 
 			pcall(function()
 				local v19, v20 = fn10()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				validator2:FireServer(v19, v20)
 
 				if obj4.ShootStyles[tool.Name] == "TAP" and tool:FindFirstChild("RemoteEvent") then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					tool.RemoteEvent:FireServer("TAP", arg)
 				elseif reShootGunEvent then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					reShootGunEvent:FireServer(arg, { character2 and (character2:FindFirstChild("HumanoidRootPart") or character2.PrimaryPart) })
 				end
 			end)
 		end
@@ -1919,7 +1923,7 @@ if not RunService then
 
 				if v19 and v19:FindFirstChild("LeftClickRemote") then
 					pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						v19.LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true)
 					end)
 				end
 			end
@@ -1951,7 +1955,7 @@ if not RunService then
 				if toolTip == "Blox Fruit" and not obj4.NormalFruits[tool.Name] and not obj4.RemoteFruits[tool.Name] then
 					if tool:FindFirstChild("LeftClickRemote") and (tbl.DoubleAttack or character:FindFirstChildOfClass("Tool") == tool) then
 						pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							tool.LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true)
 						end)
 					end
 				elseif toolTip == "Blox Fruit" and obj4.RemoteFruits[tool.Name] then
@@ -1977,7 +1981,7 @@ if not RunService then
 						fn18(lastCombo2, tool)
 					end
 				else
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					reRegisterAttack:FireServer(tbl.FastAttackDelay or 0.3)
 					fn11()
 					local tbl9 = {}
 					local v20 = nil
@@ -1990,7 +1994,7 @@ if not RunService then
 					end
 
 					if v20 and RegisterHit then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						RegisterHit:FireServer(v20, tbl9, nil, nil, tostring(v18.UserId):sub(2, 4) .. tostring(coroutine.running()):sub(11, 15))
 					end
 				end
 
@@ -2002,7 +2006,7 @@ if not RunService then
 							fn18(obj4.LastCombo or 1, v20)
 						else
 							pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+								v20.LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true)
 							end)
 						end
 					end
@@ -2247,7 +2251,7 @@ Restock: %s
 
 		tbl6.CheckInventory = function(arg, arg2)
 			local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 			end)
 
 			if not ok or not result then
@@ -2307,7 +2311,7 @@ Restock: %s
 
 		tbl8.CheckInventory = function(arg, arg2, arg3, arg4)
 			local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 			end)
 
 			if not ok or not result then
@@ -2821,7 +2825,7 @@ Restock: %s
 			local Net2 = require(v4.Modules.Net)
 
 			local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return Net2:RemoteFunction("GetAllItemValues"):InvokeServer()
 			end)
 
 			if not ok or not result or type(result) ~= "table" then
@@ -3349,7 +3353,7 @@ Restock: %s
 		local v22 = getnamecallmethod()
 		local tbl8 = { ... }
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		if not checkcaller() and (v22 == "FireServer" or v22 == "InvokeServer") then
 			local v23 = fn13()
 
 			if v23 and typeof(tbl8[1]) ~= "boolean" then
@@ -3714,7 +3718,7 @@ Restock: %s
 		end
 	end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+	PostWebhook = function(arg, arg2)
 		if not arg or arg == "" or typeof(arg) ~= "string" or not arg:find("http") then
 			return
 		end
@@ -3753,23 +3757,23 @@ Restock: %s
 			})
 		end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		local flag4 = tbl and tbl.WebhookPingId and tbl.WebhookPingId ~= ""
 		local str5 = nil
 
 		if flag4 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			if tbl.WebhookPingOnEvents and (arg:find("Mirage") or arg:find("Kitsune") or arg:find("Prehistoric")) then
+				str5 = "<@" .. tbl.WebhookPingId .. ">"
 			else
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				local webhookPingOnMythical = tbl.WebhookPingOnMythical
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				if webhookPingOnMythical then
+					webhookPingOnMythical = tostring(tbl9.Extra):find("Dragon") or tostring(tbl9.Extra):find("Kitsune") or tostring(tbl9.Extra):find("Leopard") or tostring(tbl9.Extra):find("T-Rex") or tostring(tbl9.Extra):find("Mammoth") or tostring(tbl9.Extra):find("Dough")
 				end
 
 				str5 = nil
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				if webhookPingOnMythical then
+					str5 = "<@" .. tbl.WebhookPingId .. ">"
 				end
 			end
 		end
@@ -3782,7 +3786,7 @@ Restock: %s
 					color = 8202738,
 					fields = tbl10,
 					thumbnail = {
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						url = "https://cdn.discordapp.com/attachments/1262751352791236620/1505931000948068513/Screenshot_2026-04-18_235959.png?ex=6a0c6b09&is=6a0b1989&hm=f43a97cbb0b52c83e79ef0247dac0e986d46d7455506a50e106993d36c1dea4b&",
 					},
 					timestamp = DateTime.now():ToIsoDate(),
 				},
@@ -3848,9 +3852,9 @@ Restock: %s
 		return table.concat(tbl9, "\n")
 	end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+	tbl2.Webhook.SendDataLog = function(arg, arg2, arg3)
+		local dataLogWebhookUrl = tbl.DataLogWebhookUrl and tbl.DataLogWebhookUrl ~= "" and tbl.DataLogWebhookUrl or tbl.Webhook
+		if not dataLogWebhookUrl or dataLogWebhookUrl == "" or typeof(dataLogWebhookUrl) ~= "string" or not dataLogWebhookUrl:find("http") then
 			return
 		end
 		local n2 = level and level.Value or 0
@@ -3910,7 +3914,7 @@ Restock: %s
 		tbl9[2] = tbl11
 		tbl9[3] = tbl12
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		if tbl.SendWebhookInventory ~= false then
 			local tbl13 = {}
 			local tbl14 = {}
 			local tbl15 = {}
@@ -3918,7 +3922,7 @@ Restock: %s
 			local tbl17 = {}
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				local response = Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 
 				if response and typeof(response) == "table" then
 					local tbl18 = {}
@@ -3968,7 +3972,7 @@ Restock: %s
 			end)
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				local response = commF:InvokeServer("getInventoryWeapons")
 
 				if response and typeof(response) == "table" then
 					for k in next, response, nil do
@@ -4015,7 +4019,7 @@ Restock: %s
 			end
 		end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		if tbl.SendWebhookFarmsAll then
 			table.insert(tbl9, { name = "Farms All Status", value = "```\n" .. fn18() .. "\n```", inline = false })
 		end
 
@@ -4023,7 +4027,7 @@ Restock: %s
 			table.insert(tbl9, { name = "Log Details", value = arg3, inline = false })
 		end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		PostWebhook(dataLogWebhookUrl, {
 			embeds = {
 				{
 					title = arg2 or "Quantum Onyx - Blox Fruit Data Log",
@@ -4031,7 +4035,7 @@ Restock: %s
 					color = 3066993,
 					fields = tbl9,
 					thumbnail = {
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						url = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. v18.UserId .. "&width=420&height=420&format=png",
 					},
 					footer = { text = "Quantum Onyx | " .. os.date("%X") },
 					timestamp = DateTime.now():ToIsoDate(),
@@ -4042,7 +4046,7 @@ Restock: %s
 		tbl2.Runtime.LastDataLogTick = tick()
 	end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+	tbl2.Webhook.LogError = function()
 	end
 
 	local tbl9 = {}
@@ -4184,7 +4188,7 @@ Restock: %s
 	end
 
 	GetHeadshotImage = function(arg)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		return string.format("https://www.roblox.com/headshot-thumbnail/image?userId=%d&width=420&height=420&format=png", arg)
 	end
 
 	tbl6._ActiveESPs = tbl6._ActiveESPs or {}
@@ -5325,11 +5329,11 @@ Restock: %s
 				local response = nil
 
 				pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					net:WaitForChild("RF/DragonHunter"):InvokeServer({ Context = "RequestQuest" })
 				end)
 
 				pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					response = net:WaitForChild("RF/DragonHunter"):InvokeServer({ Context = "Check" })
 				end)
 
 				local str4 = nil
@@ -5814,7 +5818,7 @@ Restock: %s
 
 								if tool and tool:FindFirstChild("RemoteEvent") then
 									pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+										tool.RemoteEvent:FireServer("TAP", position2)
 									end)
 								end
 							else
@@ -5933,7 +5937,7 @@ Restock: %s
 			Travel = v22:AddTab("Travel", "map-quantum"),
 			Shop = v22:AddTab("Tiktok Shop", "cart-quantum"),
 			Misc = v22:AddTab("Misc", "misc-quantum"),
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			Web = v22:AddTab("Webhook", "cat-quantum"),
 		}
 
 		local tbl16 = {
@@ -6463,7 +6467,7 @@ Restock: %s
 		local tbl19 = {
 			OnAutoLoadScript = function()
 				if tbl.AutoLoadScriptonLoad then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					local str5 = string.format(" task.wait(1) getgenv().Team = \"%s\" loadstring(game:HttpGet(\"https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua\"))() ", tbl.TeamSelectLoad or "Pirates")
 
 					if not pcall(function()
 						syn.queue_on_teleport(str5)
@@ -7307,19 +7311,19 @@ Restock: %s
 					tweenManager:topos(cframe)
 
 					if v18.Character and v18.Character:FindFirstChild("HumanoidRootPart") and (cframe.Position - v18.Character.HumanoidRootPart.Position).Magnitude <= 5 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						v4.Modules.Net["RF/InteractDragonQuest"]:InvokeServer({ NPC = "Uzoth", Command = "Upgrade" })
 					end
 				end
 			end)
 		end
 
 		tbl19.CraftPrehistoricItem = function(arg)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			net:WaitForChild("RF/Craft"):InvokeServer("Craft", arg, 1, {})
 		end
 
 		tbl19.ChangeDracoRace = function()
 			if v18:DistanceFromCharacter(Vector3.new(5773, 1210, 807)) <= 5 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net("RF/InteractDragonQuest"):InvokeServer({ NPC = "Dragon Wizard", Command = "DragonRace" })
 			else
 				tweenManager:topos(CFrame.new(5773, 1210, 807))
 			end
@@ -7327,30 +7331,30 @@ Restock: %s
 
 		tbl19.UnlockDungeonDifficulty = function()
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				v4.DungeonShared.DataRemote:InvokeServer("TryUnlockDifficulty", "Simulation", "Hard")
 			end)
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				v4.DungeonShared.DataRemote:InvokeServer("TryUnlockDifficulty", "Simulation", "Challenge")
 			end)
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/DungeonNPCNetworkFunction"]:InvokeServer("UnlockDifficulty")
 			end)
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/DungeonNPCNetworkFunction"]:InvokeServer("UnlockNext")
 			end)
 
 			tbl6:SendNotify("Dungeon", "Attempted to unlock difficulty", 4)
 		end
 
 		tbl19.TPDungeonHub = function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			net["RF/DungeonNPCNetworkFunction"]:InvokeServer("TeleportToDungeonHub", false)
 		end
 
 		tbl19.TPDungeonBack = function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			net["RF/DungeonNPCNetworkFunction"]:InvokeServer("TeleportBack")
 		end
 
 		tbl19.OpenNormalFruitShop = function()
@@ -7411,7 +7415,7 @@ Restock: %s
 			local tbl21 = {}
 
 			local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 			end)
 
 			if ok and result then
@@ -7429,7 +7433,7 @@ Restock: %s
 
 		tbl19.BuyTrinket = function()
 			tbl6:SendNotify("Trinkets", pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return v4.Remotes.AccessoryInteract:InvokeServer("d")
 			end) and "Purchased Trinket!" or "Failed to purchase trinket.", 4)
 		end
 
@@ -7438,7 +7442,7 @@ Restock: %s
 
 			if #v25 >= 3 then
 				tbl6:SendNotify("Trinkets", pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					return v4.Remotes.AccessoryInteract:InvokeServer("a", v25[1], v25[2], v25[3])
 				end) and "Fused 3 Trinkets successfully!" or "Failed to fuse trinkets.", 4)
 			else
 				tbl6:SendNotify("Trinkets", "Need at least 3 trinkets (Found: " .. tostring(#v25) .. ")", 4)
@@ -7450,7 +7454,7 @@ Restock: %s
 
 			if #v25 >= 1 then
 				tbl6:SendNotify("Trinket Refiner", pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					return v4.Remotes.AccessoryInteract:InvokeServer("c", v25[1])
 				end) and "Refined trinket!" or "Failed to refine trinket.", 4)
 			else
 				tbl6:SendNotify("Trinket Refiner", "No trinket available to refine.", 4)
@@ -7511,7 +7515,7 @@ Restock: %s
 
 		tbl19.TeleportJobID = function(arg)
 			local str5 = tostring(arg):gsub("`", ""):gsub("lua", ""):gsub("%s+", "")
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			v4.__ServerBrowser:InvokeServer("teleport", str5)
 		end
 
 		tbl19.TeleportQuantumPremium = function(arg)
@@ -7521,11 +7525,11 @@ Restock: %s
 				str5 = fn4(str5)
 			end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			v4.__ServerBrowser:InvokeServer("teleport", str5)
 		end
 
 		tbl19.RejoinServer = function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			v4.__ServerBrowser:InvokeServer("teleport", v4.__ServerBrowser:InvokeServer("getjob"))
 		end
 
 		tbl19.ServerHop = function()
@@ -7632,7 +7636,7 @@ Restock: %s
 			local n2 = tonumber(tbl.ScrollCraftAmount) or 1
 
 			tbl6:SendNotify("Scroll Craft", pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return Net:RemoteFunction("Craft"):InvokeServer(str5, n2)
 			end) and "Crafted " .. tostring(n2) .. "x " .. selectScrollType .. "!" or "Failed to craft scroll (check materials)", 5)
 		end
 
@@ -7729,7 +7733,7 @@ Restock: %s
 
 				if fn2 then
 					pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						local v25 = fn2({ Url = "https://blox-fruits.fandom.com/wiki/Codes", Method = "GET" })
 
 						if v25 and v25.StatusCode == 200 and v25.Body then
 							local body = v25.Body
@@ -7758,7 +7762,7 @@ Restock: %s
 				if redeem then
 					for _, v25 in ipairs(tbl23) do
 						local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							return redeem:InvokeServer(v25)
 						end)
 
 						if ok and result and (result == "SUCCESS" or result == true or tostring(result):find("Success")) then
@@ -7843,27 +7847,27 @@ Restock: %s
 			end)
 		end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		tbl19.SendTestWebhook = function()
+			if tbl.Webhook and tbl.Webhook ~= "" then
+				if PostWebhook and WeeboLogs then
+					PostWebhook(tbl.Webhook, WeeboLogs("Test Notification", {
+						Extra = "**Status:** Webhook connection is active & working properly!",
 						Field2 = { name = "User", value = v18.Name },
 					}))
 				end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				tbl6:SendNotify("Webhook", "Test webhook dispatched!", 4)
 			else
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				tbl6:SendNotify("Webhook", "Please enter a valid Webhook URL first.", 4)
 			end
 		end
 
 		tbl19.SendDataLogNow = function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			if tbl2 and tbl2.Webhook and tbl2.Webhook.SendDataLog then
+				tbl2.Webhook:SendDataLog("Quantum Onyx - Manual Data Log Request", "Triggered manually via UI button.")
 			end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			tbl6:SendNotify("Data Log", "Data Log webhook sent successfully!", 5)
 		end
 
 		task.spawn(function()
@@ -8804,38 +8808,38 @@ Restock: %s
 			})
 		end)
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		fn50("Webhook", function()
 			task.wait()
 			local v25 = tbl15.Web:addSection()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			local v26 = v25:addMenu("General Webhook")
+			tbl16:CreateTextbox(v26, "Main Webhook Url", "Webhook", { save = true, global = true })
+			tbl16:CreateToggle(v26, "Enable Send Webhook", "AutoWebhook", false, { global = true, save = true })
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			v26:addButton("Send Test Webhook", tbl19.SendTestWebhook or function()
 			end)
 
 			local v27 = v25:addMenu("World & Fruit Events")
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			tbl16:CreateToggle(v27, "Send Webhook Prehistoric", "SendWebhookPrehistoric", false, { global = true, save = true })
+			tbl16:CreateToggle(v27, "Send Webhook Kitsune", "SendWebhookKitsune", false, { global = true, save = true })
+			tbl16:CreateToggle(v27, "Send Webhook Mirage", "SendWebhookMirage", false, { global = true, save = true })
+			tbl16:CreateToggle(v27, "Send Webhook Rolled Fruit", "SendWebhookRolledFruit", false, { global = true, save = true })
+			tbl16:CreateToggle(v27, "Send Webhook Store Fruit", "SendWebhookStoreFruit", false, { global = true, save = true })
 			local v28 = tbl15.Web:addSection()
 			local v29 = v28:addMenu("Data Log & Farm Tracker")
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			tbl16:CreateToggle(v29, "Enable Data Log Webhook", "SendWebhookDataLog", false, { global = true, save = true })
+			tbl16:CreateTextbox(v29, "DataLog Webhook URL (Optional)", "DataLogWebhookUrl", { save = true, global = true })
 			tbl16:CreateSlider(v29, "Data Log Interval (Minutes)", "DataLogInterval", 1, 60, 5, { global = true, save = true })
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			tbl16:CreateToggle(v29, "Send on Level Up", "SendWebhookLevelUp", false, { global = true, save = true })
+			tbl16:CreateToggle(v29, "Include Inventory in Data Log", "SendWebhookInventory", true, { global = true, save = true })
+			tbl16:CreateToggle(v29, "Include Farms All Summary", "SendWebhookFarmsAll", true, { global = true, save = true })
 
 			v29:addButton("Send Data Log Now", tbl19.SendDataLogNow or function()
 			end)
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			local v30 = v28:addMenu("Webhook Ping & Settings")
+			tbl16:CreateTextbox(v30, "Discord User ID (For Ping)", "WebhookPingId", { save = true, global = true })
+			tbl16:CreateToggle(v30, "Ping on Mirage / Kitsune", "WebhookPingOnEvents", false, { global = true, save = true })
+			tbl16:CreateToggle(v30, "Ping on Mythical Fruit", "WebhookPingOnMythical", false, { global = true, save = true })
 		end)
 	end
 
@@ -9162,33 +9166,33 @@ Restock: %s
 		local flag4 = false
 		local n3 = level and level.Value or 0
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		fn27("AutoDataLogWebhook", 5, function()
 			if level and level.Value then
 				if level.Value > n3 then
 					local n4 = level.Value - n3
 					n3 = level.Value
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					if tbl.SendWebhookLevelUp and (tbl.AutoWebhook or tbl.SendWebhookDataLog) then
+						tbl2.Webhook:SendDataLog("Level Up Detected!", "**New Level Reached:** " .. fn15(level.Value) .. " *(+" .. n4 .. ")*")
 					end
 				elseif level.Value < n3 then
 					n3 = level.Value
 				end
 			end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			local sendWebhookDataLog = tbl.SendWebhookDataLog
 			local flag5
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			if sendWebhookDataLog then
+				local autoWebhook = tbl.AutoWebhook
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				if autoWebhook then
+					flag5 = autoWebhook
 				else
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					flag5 = tbl.DataLogWebhookUrl and tbl.DataLogWebhookUrl ~= ""
 				end
 			else
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				flag5 = sendWebhookDataLog
 			end
 
 			if flag5 then
@@ -9196,7 +9200,7 @@ Restock: %s
 				local lastDataLogTick = tbl2.Runtime.LastDataLogTick
 
 				if n4 <= tick() - lastDataLogTick then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					tbl2.Webhook:SendDataLog("Quantum Onyx - Periodic Farm Data Log")
 				end
 			end
 		end, true)
@@ -9251,19 +9255,19 @@ Restock: %s
 			end)
 		end, true)
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+		fn27("AutoWebhook", 1, function()
+			if tbl.SendWebhookPrehistoric or tbl.SendWebhookKitsune or tbl.SendWebhookMirage then
 				for k, v23 in next, {
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					["Prehistoric Island"] = tbl.SendWebhookPrehistoric,
+					["Kitsune Island"] = tbl.SendWebhookKitsune,
+					["Mirage Island"] = tbl.SendWebhookMirage,
 				}, nil do
 					if v23 then
 						local v24 = worldOrigin.Locations:FindFirstChild(k)
 
 						if v24 and not tbl16[k] then
 							tbl16[k] = true
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							PostWebhook(tbl.Webhook, WeeboLogs(k, { Position = v24:GetPivot().Position }))
 						elseif not v24 then
 							tbl16[k] = false
 						end
@@ -9276,7 +9280,7 @@ Restock: %s
 
 				commE.OnClientEvent:Connect(function(arg, arg2, arg3)
 					if arg == "ItemChanged" and arg3 == "stored" and arg2 and arg2.Name then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						if tbl.SendWebhookStoreFruit then
 							local getInventory = tbl6:FireInvoke("getInventory")
 							local tbl17 = {}
 
@@ -9286,7 +9290,7 @@ Restock: %s
 								end
 							end
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							PostWebhook(tbl.Webhook, WeeboLogs("Stored Fruit", {
 								Extra = "**Fruit:** " .. arg2.Name,
 								Field2 = { name = "Inventory", value = #tbl17 > 0 and table.concat(tbl17, ", ") or "Empty" },
 							}))
@@ -9296,11 +9300,11 @@ Restock: %s
 
 				game:GetService("ReplicatedStorage").Modules.Net["RE/SpinGacha"].OnClientEvent:Connect(function(arg)
 					if arg and arg.Winners and arg.Winners[1] then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						if tbl.SendWebhookRolledFruit then
 							local v23 = arg.Winners[1]
 
 							if v23.ItemType == "Fruit" and v23.DisplayName then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+								PostWebhook(tbl.Webhook, WeeboLogs("Rolled Fruit", { Extra = "**Fruit:** " .. v23.DisplayName }))
 							end
 						end
 					end
@@ -9331,7 +9335,7 @@ Restock: %s
 			local setAzureEmber = tbl.SetAzureEmber
 
 			if utilities:CheckInventory("Material", "Azure Ember") >= setAzureEmber then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net:FindFirstChild("RF/KitsuneStatuePray"):InvokeServer()
 				tbl6:FireInvoke("KitsuneStatuePray")
 			end
 		end)
@@ -9341,22 +9345,22 @@ Restock: %s
 
 			if rfJobsRemoteFunction then
 				pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					rfJobsRemoteFunction:InvokeServer("FishingNPC", "Angler", "CheckQuest")
+					local response = rfJobsRemoteFunction:InvokeServer("FishingNPC", "Angler", "Speak")
 
 					if response then
 						response = response.canAccept or not response.IsInQuest
 					end
 
 					if response then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						rfJobsRemoteFunction:InvokeServer("FishingNPC", "Angler", "AskQuest")
 					end
 				end)
 			end
 		end)
 
 		fn27("AutoUseRodSkill", 0.5, function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			net:WaitForChild("RF/JobToolAbilities"):InvokeServer("Z", true)
 		end)
 
 		fn27("FruitCheck", 1, function()
@@ -9415,11 +9419,11 @@ Restock: %s
 								end) then
 									tbl6:SendNotify("Fruit Dealer", "Auto-bought " .. f.Name .. " for $" .. fn15(n7) .. "!", 6)
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+									if tbl.SendWebhookStoreFruit or tbl.AutoWebhook then
+										local dataLogWebhookUrl = tbl.DataLogWebhookUrl and tbl.DataLogWebhookUrl ~= "" and tbl.DataLogWebhookUrl or tbl.Webhook
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+										if dataLogWebhookUrl and dataLogWebhookUrl ~= "" then
+											PostWebhook(dataLogWebhookUrl, WeeboLogs("Fruit Dealer Purchase", {
 												Extra = "**Auto Purchased Fruit:** " .. f.Name .. " ($" .. fn15(n7) .. ")",
 												Field2 = {
 													name = "Beli Remaining",
@@ -9472,11 +9476,11 @@ Restock: %s
 								end) then
 									tbl6:SendNotify("Mirage Dealer", "Auto-bought " .. f.Name .. " for $" .. fn15(n8) .. "!", 6)
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+									if tbl.SendWebhookStoreFruit or tbl.AutoWebhook then
+										local dataLogWebhookUrl = tbl.DataLogWebhookUrl and tbl.DataLogWebhookUrl ~= "" and tbl.DataLogWebhookUrl or tbl.Webhook
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+										if dataLogWebhookUrl and dataLogWebhookUrl ~= "" then
+											PostWebhook(dataLogWebhookUrl, WeeboLogs("Mirage Fruit Dealer Purchase", {
 												Extra = "**Auto Purchased Mirage Fruit:** " .. f.Name .. " ($" .. fn15(n8) .. ")",
 												Field2 = {
 													name = "Beli Remaining",
@@ -9517,26 +9521,26 @@ Restock: %s
 			local n8 = tonumber(tbl.ScrollCraftAmount) or 1
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				Net:RemoteFunction("Craft"):InvokeServer(str4, n8)
 			end)
 		end, true)
 
 		fn27("AutoActivateObservationHaki", 0.5, function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			remotes.CommE:FireServer("Ken", true)
 		end)
 
 		fn27("AutoSellFish", 0.5, function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			net:WaitForChild("RF/JobsRemoteFunction"):InvokeServer("FishingNPC", "SellFish")
 		end)
 
 		fn27("AutoAgility", 0.5, function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			v4.Remotes.CommE:FireServer("ActivateAbility")
 		end)
 
 		fn27("AutoActiveRaceV4", 0.5, function()
 			if v18.Character and v18.Character:FindFirstChild("RaceEnergy") and v18.Character:FindFirstChild("RaceTransformed") then
 				if v18.Character.RaceEnergy.Value >= 1 and not v18.Character.RaceTransformed.Value then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					v18.Backpack.Awakening.RemoteFunction:InvokeServer({ true })
 				end
 			end
 		end)
@@ -9595,7 +9599,7 @@ Restock: %s
 				if Cousin == 1 then
 					tbl6:SendNotify("Random Fruit", "Successfully purchased!", 5)
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					if tbl.SendWebhookRolledFruit then
 						task.spawn(function()
 							task.wait(0.6)
 							local name2 = nil
@@ -9618,10 +9622,10 @@ Restock: %s
 
 							name2 = name2 or "Unknown Fruit"
 							local match = name2:match("^(.-)%-") or name2
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							local webhook = tbl.Webhook
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							if webhook and webhook ~= "" then
+								PostWebhook(webhook, WeeboLogs("Rolled Fruit", {
 									Extra = "**Fruit:** " .. match .. " (" .. name2 .. ")",
 									Field2 = { name = "Beli Remaining", value = "$" .. fn15(beli and beli.Value or 0) },
 								}))
@@ -9667,14 +9671,14 @@ Restock: %s
 								if not child:IsDescendantOf(game) or child.Parent == nil or StoreFruit == true then
 									tbl17[attribute2] = nil
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+									if tbl.SendWebhookStoreFruit then
+										local webhook = tbl.Webhook
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+										if webhook and webhook ~= "" then
 											local tbl18 = {}
 
 											pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+												local response = Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 
 												if response and typeof(response) == "table" then
 													for _, v24 in next, response, nil do
@@ -9700,7 +9704,7 @@ Restock: %s
 												end
 											end)
 
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+											PostWebhook(webhook, WeeboLogs("Stored Fruit", {
 												Extra = "**Stored Fruit:** " .. attribute2,
 												Field2 = {
 													name = "Storage Count",
@@ -10178,7 +10182,7 @@ Restock: %s
 						task.wait(0.5)
 
 						for i = 1, 2 do
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							net:WaitForChild("RF/SubmarineWorkerSpeak"):InvokeServer("TravelToSubmergedIsland")
 						end
 
 						return
@@ -11185,7 +11189,7 @@ Restock: %s
 			end
 
 			if v18:GetAttribute("KenDodgesLeft") > 1 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				remotes.CommE:FireServer("Ken", true)
 			end
 
 			local visionRadius = v18:FindFirstChild("VisionRadius")
@@ -11218,12 +11222,12 @@ Restock: %s
 						tweenManager:topos(enemies2.HumanoidRootPart.CFrame * CFrame.new(0, 50, 10), true)
 
 						if attribute3 == 0.5 and tbl.StartObsHop then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							v4.__ServerBrowser:InvokeServer("teleport", v4.__ServerBrowser:InvokeServer("getjob"))
 						end
 					end
 
 					if attribute3 <= 0.5 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						remotes.CommE:FireServer("Ken", true)
 						tbl6:SendNotify("Observation", "Dodges low! (" .. attribute3 .. "/" .. attribute2 .. ")", 10)
 					end
 				else
@@ -11669,23 +11673,23 @@ Restock: %s
 			end
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				game.ReplicatedStorage.DungeonShared.DataRemote:InvokeServer("TryUnlockDifficulty", "Simulation", "Hard")
 			end)
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				game.ReplicatedStorage.DungeonShared.DataRemote:InvokeServer("TryUnlockDifficulty", "Simulation", "Challenge")
 			end)
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/DungeonNPCNetworkFunction"]:InvokeServer("UnlockDifficulty")
 			end)
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/DungeonNPCNetworkFunction"]:InvokeServer("UnlockNext")
 			end)
 
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/DungeonNPCNetworkFunction"]:InvokeServer("Unlock")
 			end)
 
 			task.wait(5)
@@ -11693,7 +11697,7 @@ Restock: %s
 
 		fn28("AutoBuyTrinkets", function()
 			pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				v4.Remotes.AccessoryInteract:InvokeServer("d")
 			end)
 
 			task.wait(1.5)
@@ -11703,7 +11707,7 @@ Restock: %s
 			local tbl17 = {}
 
 			local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 			end)
 
 			if ok and result then
@@ -11727,7 +11731,7 @@ Restock: %s
 
 			if #tbl17 >= 3 then
 				pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					v4.Remotes.AccessoryInteract:InvokeServer("a", tbl17[1], tbl17[2], tbl17[3])
 				end)
 			end
 
@@ -11738,7 +11742,7 @@ Restock: %s
 			local tbl17 = {}
 
 			local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 			end)
 
 			if ok and result then
@@ -11762,7 +11766,7 @@ Restock: %s
 
 			if #tbl17 >= 1 then
 				pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					v4.Remotes.AccessoryInteract:InvokeServer("c", tbl17[1])
 				end)
 			end
 
@@ -11781,7 +11785,7 @@ Restock: %s
 
 				if #tbl18 > 0 then
 					pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						v4.Remotes.AccessoryInteract:InvokeServer("b", tbl18)
 					end)
 				end
 			end
@@ -11797,7 +11801,7 @@ Restock: %s
 					{ pos = Vector3.new(-5420, 1089, -2667), color = "Winter Sky" },
 				}, nil do
 					if v18:DistanceFromCharacter(v22.pos) < 5 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+						v4.Modules.Net["RF/FruitCustomizerRF"]:InvokeServer({ StorageName = v22.color, Type = "AuraSkin", Context = "Equip" })
 						break
 					end
 				end
@@ -11920,7 +11924,7 @@ Restock: %s
 
 								if tool and tool:FindFirstChild("RemoteEvent") then
 									pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+										tool.RemoteEvent:FireServer("TAP", position2)
 									end)
 								end
 							else
@@ -11944,9 +11948,9 @@ Restock: %s
 
 		fn28("AutoWhiteBelt", function()
 			if v18:DistanceFromCharacter(Vector3.new(5867, 1208, 870)) <= 5 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/InteractDragonQuest"]:InvokeServer({ NPC = "Dojo Trainer", Command = "ClaimQuest" })
 				task.wait(1)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/InteractDragonQuest"]:InvokeServer({ NPC = "Dojo Trainer", Command = "RequestQuest" })
 				task.wait(1)
 			else
 				tweenManager:topos(CFrame.new(5867, 1208, 870))
@@ -11961,9 +11965,9 @@ Restock: %s
 
 		fn28("AutoPurpleBelt", function()
 			if v18:DistanceFromCharacter(Vector3.new(5867, 1208, 870)) <= 5 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/InteractDragonQuest"]:InvokeServer({ NPC = "Dojo Trainer", Command = "ClaimQuest" })
 				task.wait(1)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				net["RF/InteractDragonQuest"]:InvokeServer({ NPC = "Dojo Trainer", Command = "RequestQuest" })
 				task.wait(1)
 			else
 				tweenManager:topos(CFrame.new(5867, 1208, 870))
@@ -12125,7 +12129,7 @@ Restock: %s
 		fn28("AutoTrainGear", function()
 			if v18.Character:FindFirstChild("RaceEnergy") and v18.Character:FindFirstChild("RaceTransformed") then
 				if v18.Character.RaceEnergy.Value >= 1 and not v18.Character.RaceTransformed.Value then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					v18.Backpack.Awakening.RemoteFunction:InvokeServer({ true })
 				end
 			end
 
@@ -12414,7 +12418,7 @@ Restock: %s
 
 			if not utilities:CheckToolName(selectedRod) then
 				pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					net:FindFirstChild("RF/JobsRemoteFunction"):InvokeServer("FishingNPC", "FirstTimeFreeRod")
 				end)
 
 				tbl6:FireInvoke("LoadItem", selectedRod, { "Gear" })
@@ -12422,7 +12426,7 @@ Restock: %s
 
 			if tbl.AutoCraftBait and tbl.SelectedBait then
 				local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					return Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 				end)
 
 				ok = ok and result
@@ -12476,8 +12480,8 @@ Restock: %s
 				end
 
 				if not flag4 then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					if net["RF/Craft"] and net["RF/Craft"]:InvokeServer("Check", tbl.SelectedBait) then
+						net["RF/Craft"]:InvokeServer("Craft", tbl.SelectedBait, 1, {})
 						task.wait(1.5)
 						tbl6:FireInvoke("LoadItem", tbl.SelectedBait, { "Usables" })
 						task.wait(0.5)
@@ -12538,11 +12542,11 @@ Restock: %s
 				if fishingRequest then
 					if tbl.AutoGetChest then
 						pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							fishingRequest:InvokeServer("Catch", 1, 1)
 						end)
 					else
 						pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							fishingRequest:InvokeServer("Catch", 1)
 						end)
 					end
 				end
@@ -12603,7 +12607,7 @@ Restock: %s
 
 		fn28("AutoMasterySwords", function()
 			local ok, result = pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+				return Net:RemoteFunction("GetAllItemValues"):InvokeServer()
 			end)
 
 			if not ok or not result then
@@ -13172,7 +13176,7 @@ Restock: %s
 							if utilities:GetDistance(cframe6) < 200 then
 								v2.CurrentCamera.CFrame = CFrame.lookAt(v2.CurrentCamera.CFrame.p, v2.CurrentCamera.CFrame.p + v7:GetMoonDirection() * 100)
 								wait(0.5)
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+								v4.Remotes.CommE:FireServer("ActivateAbility")
 							end
 						else
 							tweenManager:topos(flag4.CFrame)
@@ -13499,7 +13503,7 @@ Restock: %s
 						local rfClaimBerry = net:FindFirstChild("RF/ClaimBerry")
 
 						if rfClaimBerry then
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+							rfClaimBerry:InvokeServer(v22.Name, v23)
 						end
 					end)
 				end
@@ -14055,7 +14059,7 @@ Restock: %s
 				state.CurrentDracoStage = 1
 
 				pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+					remotes.DracoTrial:InvokeServer()
 				end)
 			end
 		end, flag3)
@@ -14153,7 +14157,7 @@ Restock: %s
 		tbl6:SendNotify("Quantum (INFO)", "Quantum Onyx Script is 100% Free and Keyless", 8)
 
 		pcall(function()
--- [SANITIZED: network/executor/dynamic-load/remote operation removed]
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/Util/BloxFruitModule/Preload/Weebo.lua"))()
 		end)
 	end)
 
